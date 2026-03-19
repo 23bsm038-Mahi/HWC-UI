@@ -49,7 +49,8 @@ import { SessionStorageService } from 'Common-UI/src/registrar/services/session-
   styleUrls: ['./workarea.component.css'],
 })
 export class WorkareaComponent
-  implements OnInit, CanComponentDeactivate, DoCheck {
+  implements OnInit, CanComponentDeactivate, DoCheck
+{
   @ViewChild('sidenav')
   sidenav: any;
 
@@ -97,7 +98,7 @@ export class WorkareaComponent
     public httpServiceService: HttpServiceService,
     private labService: LabService,
     readonly sessionstorage: SessionStorageService,
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.assignSelectedLanguage();
@@ -352,8 +353,8 @@ export class WorkareaComponent
         });
         this.confirmationService.alert(
           this.currentLanguageSet.alerts.info.valueDetails +
-          ' ' +
-          `${component.value.range_min} to ${component.value.range_max}`,
+            ' ' +
+            `${component.value.range_min} to ${component.value.range_max}`,
         );
       }
     }
@@ -439,10 +440,10 @@ export class WorkareaComponent
             console.log('File Size' + this.fileList[0].size / 1000 / 1000);
             this.confirmationService.alert(
               this.currentLanguageSet.fileSizeShouldNotExceed +
-              ' ' +
-              this.maxFileSize +
-              ' ' +
-              this.currentLanguageSet.mb,
+                ' ' +
+                this.maxFileSize +
+                ' ' +
+                this.currentLanguageSet.mb,
               'error',
             );
           } else if (this.file) {
@@ -731,11 +732,12 @@ export class WorkareaComponent
                   </body>
                   </html>
             `);
-
               } else {
-                this.confirmationService.alert("Popup blocked. Please allow popups.", 'err');
+                this.confirmationService.alert(
+                  'Popup blocked. Please allow popups.',
+                  'err',
+                );
               }
-
             }
           },
           (err) => {
@@ -882,10 +884,10 @@ export class WorkareaComponent
       .confirm(
         'info',
         this.currentLanguageSet.alerts.info.confirmSubmit +
-        ' ' +
-        `${option}` +
-        ' ' +
-        this.currentLanguageSet.alerts.info.labObservation,
+          ' ' +
+          `${option}` +
+          ' ' +
+          this.currentLanguageSet.alerts.info.labObservation,
       )
       .subscribe(
         (res) => {
@@ -983,7 +985,7 @@ export class WorkareaComponent
             });
           }
         },
-        (err) => { },
+        (err) => {},
       );
   }
   sideNavModeChange(sidenav: any) {

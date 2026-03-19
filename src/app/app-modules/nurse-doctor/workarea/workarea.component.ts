@@ -202,6 +202,7 @@ export class WorkareaComponent
   patientQuickConsultForm!: FormGroup;
   abdmFacilityId: any;
   abdmFacilityName: any;
+  doctorSignatureFlag = false;
 
   constructor(
     private router: Router,
@@ -329,6 +330,13 @@ export class WorkareaComponent
     this.enableUpdateButtonOnDoctorInteraction();
     this.enableUpdateButtonFamilyPlanning();
     this.enableUpdateButtonBirthImmunizationHistory();
+    this.doctorService
+      .checkUsersignatureExist(this.sessionstorage.getItem('userID'))
+      .subscribe((res: any) => {
+        if (res.statusCode === 200 && res.data !== null) {
+          this.doctorSignatureFlag = res.data.signStatus;
+        }
+      });
   }
   setVitalsUpdateButtonValue() {
     this.enableVitalsButtonSubscription =
@@ -1718,6 +1726,7 @@ export class WorkareaComponent
           temp,
           this.schedulerData,
           this.isSpecialist,
+          this.doctorSignatureFlag,
         )
         .subscribe(
           (res: any) => {
@@ -1927,6 +1936,7 @@ export class WorkareaComponent
             visitCategory,
             otherDetails,
             this.schedulerData,
+            this.doctorSignatureFlag,
           )
           .subscribe(
             (res: any) => {
@@ -2169,6 +2179,7 @@ export class WorkareaComponent
             visitCategory,
             otherDetails,
             this.schedulerData,
+            this.doctorSignatureFlag,
           )
           .subscribe(
             (res: any) => {
@@ -2919,6 +2930,7 @@ export class WorkareaComponent
         }
       }
     }
+
     if (required.length) {
       this.confirmationService.notify(
         this.current_language_set.alerts.info.belowFields,
@@ -3573,7 +3585,8 @@ export class WorkareaComponent
           (res: any) => {
             if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
-                this.current_language_set.alerts.info.datafillSuccessfully,
+                this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+                  'Data saved successfully',
                 'success',
               );
               this.navigateToNurseWorklist();
@@ -3736,6 +3749,7 @@ export class WorkareaComponent
       providerServiceMapID: this.sessionstorage.getItem('providerServiceID'),
       createdBy: this.sessionstorage.getItem('userName'),
       isSpecialist: this.isSpecialist,
+      doctorSignatureFlag: this.doctorSignatureFlag,
     };
 
     const valid = this.checkQuickConsultDoctorData(this.patientMedicalForm);
@@ -3795,6 +3809,7 @@ export class WorkareaComponent
           { quickConsultation: patientQuickConsultFormValue },
           this.schedulerData,
           this.isSpecialist,
+          this.doctorSignatureFlag,
         )
         .subscribe(
           (res: any) => {
@@ -3807,13 +3822,15 @@ export class WorkareaComponent
                   labTestOrders.length > 0
                 ) {
                   this.confirmationService.alert(
-                    this.current_language_set.alerts.info.datafillSuccessfully,
+                    this.current_language_set?.alerts?.info
+                      ?.datafillSuccessfully ?? 'Data saved successfully',
                     'success',
                   );
                   this.navigateToSpecialistWorklist();
                 } else {
                   this.getHealthIDDetails(
-                    this.current_language_set.alerts.info.datafillSuccessfully,
+                    this.current_language_set?.alerts?.info
+                      ?.datafillSuccessfully ?? 'Data saved successfully',
                   );
                 }
               } else {
@@ -3825,13 +3842,15 @@ export class WorkareaComponent
                     this.schedulerData !== null)
                 ) {
                   this.confirmationService.alert(
-                    this.current_language_set.alerts.info.datafillSuccessfully,
+                    this.current_language_set?.alerts?.info
+                      ?.datafillSuccessfully ?? 'Data saved successfully',
                     'success',
                   );
                   this.navigateToDoctorWorklist();
                 } else {
                   this.getHealthIDDetails(
-                    this.current_language_set.alerts.info.datafillSuccessfully,
+                    this.current_language_set?.alerts?.info
+                      ?.datafillSuccessfully ?? 'Data saved successfully',
                   );
                 }
               }
@@ -3985,7 +4004,8 @@ export class WorkareaComponent
           (res: any) => {
             if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
-                this.current_language_set.alerts.info.datafillSuccessfully,
+                this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+                  'Data saved successfully',
                 'success',
               );
               this.navigateToNurseWorklist();
@@ -4022,6 +4042,7 @@ export class WorkareaComponent
           temp,
           this.schedulerData,
           this.isSpecialist,
+          this.doctorSignatureFlag,
         )
         .subscribe(
           (res: any) => {
@@ -4060,7 +4081,8 @@ export class WorkareaComponent
           (res: any) => {
             if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
-                this.current_language_set.alerts.info.datafillSuccessfully,
+                this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+                  'Data saved successfully',
                 'success',
               );
               this.navigateToNurseWorklist();
@@ -4093,7 +4115,8 @@ export class WorkareaComponent
           (res: any) => {
             if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
-                this.current_language_set.alerts.info.datafillSuccessfully,
+                this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+                  'Data saved successfully',
                 'success',
               );
               this.navigateToNurseWorklist();
@@ -4129,7 +4152,8 @@ export class WorkareaComponent
           (res: any) => {
             if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
-                this.current_language_set.alerts.info.datafillSuccessfully,
+                this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+                  'Data saved successfully',
                 'success',
               );
               this.navigateToNurseWorklist();
@@ -4190,13 +4214,15 @@ export class WorkareaComponent
                     this.schedulerData !== null)
                 ) {
                   this.confirmationService.alert(
-                    this.current_language_set.alerts.info.datafillSuccessfully,
+                    this.current_language_set?.alerts?.info
+                      ?.datafillSuccessfully ?? 'Data saved successfully',
                     'success',
                   );
                   this.navigateToDoctorWorklist();
                 } else {
                   this.getHealthIDDetails(
-                    this.current_language_set.alerts.info.datafillSuccessfully,
+                    this.current_language_set?.alerts?.info
+                      ?.datafillSuccessfully ?? 'Data saved successfully',
                   );
                 }
               }
@@ -4230,6 +4256,7 @@ export class WorkareaComponent
           temp,
           this.schedulerData,
           this.isSpecialist,
+          this.doctorSignatureFlag,
         )
         .subscribe(
           (res: any) => {
@@ -4269,7 +4296,8 @@ export class WorkareaComponent
           (res: any) => {
             if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
-                this.current_language_set.alerts.info.datafillSuccessfully,
+                this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+                  'Data saved successfully',
                 'success',
               );
               this.navigateToNurseWorklist();
@@ -4303,7 +4331,8 @@ export class WorkareaComponent
           (res: any) => {
             if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
-                this.current_language_set.alerts.info.datafillSuccessfully,
+                this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+                  'Data saved successfully',
                 'success',
               );
               this.navigateToNurseWorklist();
@@ -4346,13 +4375,15 @@ export class WorkareaComponent
       this.testsPrescribed.laboratoryList.length > 0
     ) {
       this.confirmationService.alert(
-        this.current_language_set.alerts.info.datafillSuccessfully,
+        this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+          'Data saved successfully',
         'success',
       );
       this.navigateToSpecialistWorklist();
     } else {
       this.getHealthIDDetails(
-        this.current_language_set.alerts.info.datafillSuccessfully,
+        this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+          'Data saved successfully',
       );
     }
   }
@@ -4370,13 +4401,15 @@ export class WorkareaComponent
       (this.schedulerData !== undefined && this.schedulerData !== null)
     ) {
       this.confirmationService.alert(
-        this.current_language_set.alerts.info.datafillSuccessfully,
+        this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+          'Data saved successfully',
         'success',
       );
       this.navigateToDoctorWorklist();
     } else {
       this.getHealthIDDetails(
-        this.current_language_set.alerts.info.datafillSuccessfully,
+        this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+          'Data saved successfully',
       );
     }
   }
@@ -4525,6 +4558,7 @@ export class WorkareaComponent
           temp,
           this.schedulerData,
           this.isSpecialist,
+          this.doctorSignatureFlag,
         )
         .subscribe(
           (res: any) => {
@@ -4567,6 +4601,7 @@ export class WorkareaComponent
           temp,
           this.schedulerData,
           this.isSpecialist,
+          this.doctorSignatureFlag,
         )
         .subscribe(
           (res: any) => {
@@ -5509,7 +5544,8 @@ export class WorkareaComponent
           (res: any) => {
             if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
-                this.current_language_set.alerts.info.datafillSuccessfully,
+                this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+                  'Data saved successfully',
                 'success',
               );
               this.navigateToNurseWorklist();
@@ -5542,7 +5578,8 @@ export class WorkareaComponent
           (res: any) => {
             if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
-                this.current_language_set.alerts.info.datafillSuccessfully,
+                this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+                  'Data saved successfully',
                 'success',
               );
               this.navigateToNurseWorklist();
@@ -5572,7 +5609,8 @@ export class WorkareaComponent
           (res: any) => {
             if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
-                this.current_language_set.alerts.info.datafillSuccessfully,
+                this.current_language_set?.alerts?.info?.datafillSuccessfully ??
+                  'Data saved successfully',
                 'success',
               );
               this.navigateToNurseWorklist();

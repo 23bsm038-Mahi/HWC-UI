@@ -279,6 +279,8 @@ export class NurseWorklistComponent implements OnInit, DoCheck, OnDestroy {
                   .confirm(
                     `info`,
                     this.currentLanguageSet.alerts.info.confirmtoProceedFurther,
+                    this.currentLanguageSet.common.ok,
+                    this.currentLanguageSet.common.cancel,
                   )
                   .subscribe((result) => {
                     if (result) {

@@ -70,7 +70,7 @@ const dhisURL = '';
 export const environment = {
   production: false,
   encKey: sessionStorageEncKey,
-
+  isEnableES: true,
   tracking: {
     platform: 'matomo',
     siteId: 1,
@@ -564,6 +564,10 @@ export const environment = {
   printPngCard: `${FHIR_API}abhaCreation/printAbhaCard`,
   printWebLoginPhrCard: `${FHIR_API}abhaLogin/printWebLoginPhrCard`,
 
+  /* Abha M2 V3 APIs */
+  generateLinkTokenForCareContext: `${FHIR_API}careContext/generateCareContextToken`,
+  linkCareContext: `${FHIR_API}careContext/linkCareContext`,
+
   getBenIdForhealthID: `${FHIR_API}healthID/getBenIdForhealthID`,
 
   siteKey: siteKey,
@@ -571,4 +575,8 @@ export const environment = {
   enableCaptcha: enableCaptcha,
   enableCHOReportBtn: enableCHOReportBtn,
   dhisURL: dhisURL,
+  getUserId: `${COMMON_API}user/userName/`,
+  checkUsersignExistUrl: `${ADMIN_API}signature1/signexist/`,
+  elasticSearchUrl: `${HWC_API}registrar/quickSearchES`,
+  advanceElasticSearchUrl: `${HWC_API}registrar/advancedSearchES`,
 };

@@ -13,7 +13,7 @@ export class ConfirmationService {
   eSanjeevaniFlagArry: any;
   eSanjeevaniDoctorFlagArry: any;
   constructor(
-    private dialog: MatDialog,
+    public dialog: MatDialog,
     @Inject(DOCUMENT) doc: any,
   ) {}
 

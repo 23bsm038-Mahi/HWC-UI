@@ -571,7 +571,9 @@ export class DoctorDiagnosisCaseSheetComponent
         ].join('/');
       }
 
-      this.downloadSign();
+      if (this.casesheetData?.BeneficiaryData?.doctorSignatureFlag) {
+        this.downloadSign();
+      }
       this.getVaccinationTypeAndDoseMaster();
     }
   }

@@ -38,23 +38,24 @@
         "ro": {
             "registration": "Registration",
             "benIDOrPhNo": "Look for BeneficiaryID or Phone number or ABHA here...",
+            "benDetails": "Look for Beneficiary Details",
             "personalInfo": {
                 "personalInformation": "Personal Information",
                 "educationalQualification": "Educational Qualification",
                 "otherOccupation": "Other Occupation",
-                "martialStatus": "Marital Status",
+                "maritalStatusName": "Marital Status",
                 "ageAtMarriage": "Age at Marriage (Years)",
                 "spouseName": "Spouse Name",
                 "firstName": "First Name",
                 "lastName": "Last Name/Sur Name",
                 "fullName": "Full Name",
                 "maritalStatus": "Marital Status",
-                "contactNo": "Contact No",
+                "phoneNo": "Phone Number",
                 "alternateNumber":"Alternate Number",
                 "gender": "Gender",
                 "age": "Age",
-                "ageUnit": "Age Unit",
-                "dob": "DOB (DD/MM/YYYY)",
+                "ageUnits": "Age Unit",
+                "dOB": "DOB (DD/MM/YYYY)",
                 "incomeStatus": "Income Status",
                 "literacyStatus": "Literacy Status",
                 "occupation": "Occupation",
@@ -92,6 +93,11 @@
                 "govtIDNumber": "Govt. ID Number",
                 "govtHealthProgramType": "Govt. Health Program Type",
                 "govtHealthProgramIDNumber": "Govt. Health Program ID"
+            },
+            "abhaInfo": {
+                "abhaInformation": "ABHA Information",
+                "abhaNumber": "ABHA Number",
+                "abhaAddress": "ABHA Address"
             }
         },
         "bendetails": {
@@ -107,7 +113,7 @@
             "district": "District / Village",
             "registrationDate": "Registration Date",
             "image": "Image",
-            "advanceSearch": "Advance Search",
+            "advanceSearch": "Advanced Search",
             "externalSearch": "Higher Health Facility Search",
             "status": "Status",
             "visitCategory": "Visit Category / Visit No",
@@ -302,7 +308,7 @@
             "toTime": "To Time",
             "Kindlyuploadthefiles": "Kindly upload the files",
             "clearslots":"Clear Slot",
-            "advanceBeneficiarySearch": "Advance Beneficiary Search",
+            "advanceBeneficiarySearch": "Advanced Beneficiary Search",
             "externalBeneficiarySearch": "External Beneficiary Search",
             "firstNameisrequired": "First Name is required",
             "pleaseprovideatleast2character": "Please provide atleast 2 character",
@@ -1366,7 +1372,8 @@
             "image": "View Image",
             "reschedule": "Reschedule TC",
             "cancel": "Cancel",
-            "schedule": "Schedule"
+            "schedule": "Schedule",
+            "accept": "Accept"
         },
         "casesheet": {
             "caseComponent": "Select casesheet component for print",
@@ -1638,6 +1645,7 @@
         "dateOfCreation":"Date of Creation",
         "healthIDMode":"HealthID Mode",
         "generateOTP":"Generate OTP",
+        "generateToken":"Generate Token",
         "enterOTP":"Enter OTP",
         "OTPSentToMobNo":"OTP sent to your mobile number :",
         "OTPSentToAadharLinkedNo":"OTP sent to your Aadhar linked mobile number",
@@ -2078,7 +2086,7 @@
         "welcome": "Welcome",
         "clickonServiceToProceed": "Click on service to proceed",
         "done": "done",
-        "consentFormText": "To provide you with better service, we would,request your personal information. The information that you will providewill be kept confidential and will only be used for research and analysis.",
+        "consentFormText": "To provide you with better service, we would request your personal information. The information that you will provide will be kept confidential and will only be used for research and analysis.",
         "HeadOfTheFamilyAlreadyPresentRemoveExistingAndContinue": "Head of the Family is already present. Please, remove the existing head to continue",
         "HeadOfTheFamilyAlreadyPresentRemoveExisting": "Head of the Family is already present. Please, remove the existing head.",
         "backToRegistration":"Back to Registration",
@@ -2132,7 +2140,8 @@
         "continueButton": "Continue",
         "accessDenied": "Access Denied",
         "internaleServerError": "Internal Server Error",
-        "somethingWentWrong": "Something went wrong"
+        "somethingWentWrong": "Something went wrong",
+        "pleaseWaitWhileLinkingCareContext": "Please wait while linking care context"
     }
 
     
