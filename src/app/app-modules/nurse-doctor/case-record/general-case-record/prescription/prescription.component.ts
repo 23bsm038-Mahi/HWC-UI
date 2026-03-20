@@ -390,8 +390,59 @@ export class PrescriptionComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   submitForUpload() {
+    const validationErrors = this.validateCurrentPrescription();
+
+    if (validationErrors.length > 0) {
+      const errorMessage =
+        'Please fill the following required fields:\n' +
+        validationErrors.map((e, i) => `${i + 1}. ${e}`).join('\n');
+      this.confirmationService.alert(errorMessage, 'error');
+      return;
+    }
+
     this.addMedicine();
     this.clearCurrentaddDetails();
+  }
+
+  validateCurrentPrescription(): string[] {
+    const errors: string[] = [];
+
+    if (!this.currentPrescription.formName) {
+      errors.push('Medicine Form');
+    }
+    if (!this.currentPrescription.drugName || !this.tempDrugName) {
+      errors.push('Medicine Name');
+    }
+    if (!this.currentPrescription.dose) {
+      errors.push('Dosage');
+    }
+    if (!this.currentPrescription.frequency) {
+      errors.push('Frequency');
+    }
+
+    // Conditional validations
+    if (
+      this.currentPrescription.frequency &&
+      this.currentPrescription.frequency !== 'SOS'
+    ) {
+      if (!this.currentPrescription.duration) {
+        errors.push('Duration');
+      }
+      if (!this.currentPrescription.unit) {
+        errors.push('Unit');
+      }
+    }
+
+    // Quantity required for non-liquid forms
+    if (
+      this.currentPrescription.formID &&
+      this.currentPrescription.formID > 2 &&
+      !this.currentPrescription.qtyPrescribed
+    ) {
+      errors.push('Quantity');
+    }
+
+    return errors;
   }
 
   addMedicine() {

@@ -119,7 +119,11 @@ export class DoctorWorklistComponent implements OnInit, DoCheck, OnDestroy {
   redirectToCHOReport() {
     const loginDataResponse =
       this.sessionstorage.getItem('loginDataResponse') ?? 'null';
-    window.location.href = `${environment.dhisURL}${JSON.parse(loginDataResponse)?.dhistoken}`;
+    const token = JSON.parse(loginDataResponse)?.dhistoken;
+
+    const url = `${environment.dhisURL}${token}`;
+
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
   setDisplayedColumns() {

@@ -65,11 +65,13 @@ const sessionStorageEncKey = '';
 const siteKey = '';
 const captchaChallengeURL = '';
 const enableCaptcha = false;
+const enableCHOReportBtn = true;
+const dhisURL = '';
 
 export const environment = {
   production: false,
   encKey: sessionStorageEncKey,
-
+  isEnableES: true,
   tracking: {
     platform: 'matomo',
     siteId: 1,
@@ -147,6 +149,7 @@ export const environment = {
   externalSearchIdentityUrl: `${FHIR_API}patient/data/profile/search/demographic`,
   patientRevisitSubmitToNurse: `${HWC_API}common/update/benDetailsAndSubmitToNurse`,
   identityPatientRevisitSubmitToNurseURL: `${HWC_API}registrar/create/BenReVisitToNurse`,
+  advanceElasticSearchUrl: `${HWC_API}registrar/advancedSearchES`,
   /**
    * Master Data Urls
    */
@@ -563,9 +566,18 @@ export const environment = {
   printPngCard: `${FHIR_API}abhaCreation/printAbhaCard`,
   printWebLoginPhrCard: `${FHIR_API}abhaLogin/printWebLoginPhrCard`,
 
+  /* Abha M2 V3 APIs */
+  generateLinkTokenForCareContext: `${FHIR_API}careContext/generateCareContextToken`,
+  linkCareContext: `${FHIR_API}careContext/linkCareContext`,
+
   getBenIdForhealthID: `${FHIR_API}healthID/getBenIdForhealthID`,
 
   siteKey: siteKey,
   captchaChallengeURL: captchaChallengeURL,
   enableCaptcha: enableCaptcha,
+  getUserId: `${COMMON_API}user/userName/`,
+  enableCHOReportBtn: enableCHOReportBtn,
+  dhisURL: dhisURL,
+  elasticSearchUrl: `${HWC_API}registrar/quickSearchES`,
+  checkUsersignExistUrl: `${ADMIN_API}signature1/signexist/`,
 };

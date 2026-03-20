@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.iemr.aam-ui</groupId>
 	<artifactId>aam-ui</artifactId>
-	<version>3.6.0</version>
+	<version>3.6.1</version>
 	<name>AAM-UI</name>
 	<description>Piramal - AAM: Module ui</description>
 	<packaging>war</packaging>

@@ -33,11 +33,12 @@
       "visit": "आगमन",
       "current": "वर्तमान टीसी",
       "future": "भविष्य टीसी",
-      "referred": "MMU Referred"
+      "referred": "MMU संदर्भित"
     },
     "ro": {
       "registration": "पंजीकरण",
-      "benIDOrPhNo": "Look for BeneficiaryID or Phone number or ABHA here...",
+      "benIDOrPhNo": "यहाँ लाभार्थी ID, फ़ोन नंबर या ABHA खोजें...",
+      "benDetails": "लाभार्थी विवरण देखें",
       "personalInfo": {
         "personalInformation": "व्यक्तिगत जानकारी",
         "educationalQualification": "शैक्षिक योग्यता",
@@ -48,7 +49,7 @@
         "maritalStatus": "वैवाहिक स्थिति",
         "lastName": "उपनाम",
         "contactNo": "संपर्क नंबर",
-        "alternateNumber":"Alternate Number",
+        "alternateNumber":"वैकल्पिक संख्या",
         "gender": "लिंग",
         "age": "आयु",
         "ageUnit": "उम्र यूनिट",
@@ -71,7 +72,7 @@
         "address2": "पता पंक्ति नं। 2",
         "address3": "पता पंक्ति 3",
         "pincode": "पिन कोड",
-        "village": "Village"
+        "village": "गाँव"
       },
       "otherInfo": {
         "otherInformation": "अन्य जानकारी",
@@ -89,6 +90,11 @@
         "govtIDNumber": "सरकार। आईडी नंबर",
         "govtHealthProgramType": "सरकार। स्वास्थ्य कार्यक्रम के प्रकार",
         "govtHealthProgramIDNumber": "सरकार। स्वास्थ्य कार्यक्रम आईडी नंबर"
+      },
+      "abhaInfo": {
+        "abhaInformation": "ABHA Information",
+        "abhaNumber": "ABHA Number",
+        "abhaAddress": "ABHA Address"
       }
     },
     "bendetails": {
@@ -105,7 +111,7 @@
       "registrationDate": "पंजीकरण की तारीख",
       "image": "छवि",
       "advanceSearch": "आधुनिक खोज",
-      "externalSearch": "Higher Health Facility Search",
+      "externalSearch": "उच्च स्वास्थ्य सुविधा खोजें",
       "status": "स्थिति",
       "visitCategory": "श्रेणी पर जाएँ / जाएँ संख्या",
       "tcDate": "टी सी की तारीख",
@@ -131,7 +137,7 @@
       "visionScreening": "Vision Screening",
       "tuberculosisScreening": "Tuberculosis Screening",
       "malariaScreening": "Malaria Screening",
-      "doYouWantToLinkCareContext":"Do you want to link Care Context?",
+      "doYouWantToLinkCareContext":"क्या आप केयर कॉन्टेक्स्ट लिंक करना चाहते हैं?",
       "moderate":"उदारवादी",
       "higher":"उच्चतर",
       "lower": "कम",
@@ -142,7 +148,7 @@
       "timeSheet": "समय पत्र",
       "dataSync": "डेटा सिंक",
       "TCSpecialist": "टीसी विशेषज्",
-      "enterOncologistObservation": "Enter oncologist observation",
+      "enterOncologistObservation": "ऑन्कोलॉजिस्ट का अवलोकन दर्ज करें",
       "totalPages": "कुल पेज",
       "term": "टर्म",
       "beneficiaryMovedtoNurse": "लाभार्थी नर्स कार्यसूची में चला गया है",
@@ -181,7 +187,7 @@
       "caseRecord": "केस रिकॉर्ड ",
       "search": "खोजें",
       "reset": "पुनर्स्थापित",
-      "generateOTP": "Generate Health ID",
+      "generateOTP": "स्वास्थ्य आईडी बनाएं",
       "submit": "दर्ज करें",
       "close": "बंद करें",
       "clear": "स्पष्ट",
@@ -195,7 +201,7 @@
       "normal": "सामान्य",
       "abnormal": "असामान्य",
       "limping": "लंगड़ापन",
-      "comfort": "Comfort",
+      "comfort": "आराम",
       "comfortable": "आरामदायक",
       "uncomfortable": "असुविधाजनक",
       "present": "उपस्थित",
@@ -1354,7 +1360,8 @@
       "image": "छवि देखें",
       "reschedule": "पुनर्निर्धारित टीसी",
       "cancel": "रद्द करना",
-      "schedule": "अनुसूची"
+      "schedule": "अनुसूची",
+      "accept": "स्वीकार करें"
     },
     "casesheet": {
       "caseComponent": "प्रिंट के लिए केसशीट घटक का चयन करें",
@@ -1636,14 +1643,14 @@
         "alternateNumber": "वैकल्पिक संख्या",
         "mobileNumber":"मोबाइल संख्या",
         "resendOTP":"ओटीपी पुनः भेजें",
-        "generateHealthID": "Generate Health ID",
+        "generateHealthID": "स्वास्थ्य आईडी बनाएं",
         "healthIDGeneratedSuccessfully":"स्वास्थ्य आईडी सफलतापूर्वक उत्पन्न हुई",
         "healthIDValidatedSuccessfully":"Health ID validated Successfully.",
         "healthIDValidation":"Health ID Validation",
         "healthIDSearch":"Health ID Search",
-        "printHealthIDCard": "Print Health ID Card",
-        "healthIDCard": "Health ID Card",
-        "generateHealthIDCard": "Generate Health ID Card",
+        "printHealthIDCard": "स्वास्थ्य आईडी कार्ड प्रिंट करें",
+        "healthIDCard": "स्वास्थ्य आईडी कार्ड",
+        "generateHealthIDCard": "स्वास्थ्य आईडी कार्ड बनाएं",
         "healthIDGenerationMode":"HealthId Generation Mode",
         "enterHealthID":"Enter Health ID",
         "validHealthIDMessage":"Enter valid health ID:Please enter a valid Health ID. It should contain 4 (min) to 32 (max) characters. For instance- xxxx.1523 :healthId",
@@ -1896,7 +1903,8 @@
         "numberPerWeek": "Number Per Week",
         "youngChildAgeShouldBeLessThanBenAge": "Youngest child age entered can not be greater than beneficiary age",
         "immunizationService": "Immunization Services",
-        "birthImmunizationHistory" :"Birth & Immunization History",
+        "birthImmunizationHistory": "जन्म एवं टीकाकरण का इतिहास",
+        "immunizationService": "टीकाकरण सेवाएँ",
         "placeOfDelivery": "Place of Delivery",
         "typeOfDelivery": "Type of Delivery",
         "complicationAtBirth": "Complication at Birth",
@@ -2033,7 +2041,6 @@
          "familyPlanningAndReproductiveDetails": "Family Planning and Reproductive Details",
          "iecAndCounsellingDetails:":"IEC And Counselling Details:",
          "dispensationDetails:": "Dispensation Details:",
-         "birthImmunizationHistory":"Birth & Immunization History",
          "vaccineName:":"Vaccine Name:",
          "vaccinationReceviedAt":"Vaccination Recevied At:",
          "immunizationServices":"Immunization Services",
@@ -2103,7 +2110,7 @@
         "treatment": "Treatment",
         "selfcare": "Self-Care",
         "investigations": "Investigations",
-        "noRecordsFound": "No Records Found",
+        "noRecordsFound": "कोई रिकॉर्ड नहीं मिला",
         "enterMobileNumberToBeLinkedWithAbha": "Enter Phone number to be linked with ABHA",
         "doYouWantToVerifyMobileOtpForAbha": "Your provided mobile number is not linked with Aadhaar, Do you want to verify it?",
         "abhaCardAlreadyExists": "ABHA already exists for the Aadhaar Number",
@@ -2127,6 +2134,7 @@
         "continueButton": "जारी रखें",
         "accessDenied": "पहुँच अस्वीकृत",
         "internaleServerError": "आंतरिक सर्वर त्रुटि",
-        "somethingWentWrong": "कुछ गलत हो गया"
+        "somethingWentWrong": "कुछ गलत हो गया",
+        "pleaseWaitWhileLinkingCareContext": "Please wait while linking care context"
       }
 }

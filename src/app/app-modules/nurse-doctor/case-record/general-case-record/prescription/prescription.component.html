@@ -70,7 +70,6 @@
             getFormValueChanged();
             trackFieldInteraction('Medicine Form Selection')
           "
-          required
         >
           <mat-option
             *ngFor="let item of drugFormMaster"
@@ -98,7 +97,6 @@
           (keyup)="filterMedicine(tempDrugName)"
           (blur)="reEnterMedicine()"
           (focus)="trackFieldInteraction('Medicine Name Input')"
-          required
           [matAutocomplete]="autoGroup"
         />
         <mat-autocomplete
@@ -129,7 +127,6 @@
           [(ngModel)]="currentPrescription.dose"
           [disabled]="!currentPrescription.drugID"
           (selectionChange)="trackFieldInteraction('Dosage Selection')"
-          required
         >
           <mat-option
             *ngFor="let item of filteredDrugDoseMaster"
@@ -152,7 +149,6 @@
           [(ngModel)]="currentPrescription.frequency"
           [disabled]="!currentPrescription.drugID"
           (selectionChange)="trackFieldInteraction('Frequency Selection')"
-          required
         >
           <mat-option
             *ngFor="let item of drugFrequencyMaster"
@@ -225,7 +221,6 @@
           [(ngModel)]="currentPrescription.qtyPrescribed"
           [disabled]="!currentPrescription.drugID"
           (selectionChange)="trackFieldInteraction('Quantity Selection')"
-          required
         >
           <mat-option
             *ngFor="let item of drugDurationMaster | slice: 0 : 5"
