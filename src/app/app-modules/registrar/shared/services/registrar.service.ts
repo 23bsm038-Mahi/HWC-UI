@@ -294,6 +294,17 @@ export class RegistrarService {
   getHealthIdDetails(reqObj: any) {
     return this.http.post(environment.gethealthIdDetailsUrl, reqObj);
   }
+
+  getMappedFacility(workLocationId: any) {
+    return this.http.get(
+      `${environment.getAbdmMappedFacility}${workLocationId}`,
+    );
+  }
+
+  saveAbdmFacilityForVisit(reqObj: any) {
+    return this.http.post(environment.saveAbdmFacilityIdForVisit, reqObj);
+  }
+
   generateOtpForMappingCareContext(reqObjForMapping: any) {
     return this.http.post(
       environment.careContextGenerateOtpUrl,

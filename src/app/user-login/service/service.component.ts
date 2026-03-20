@@ -182,7 +182,8 @@ export class ServiceComponent implements OnInit, DoCheck {
       const serviceProviderId: any =
         this.sessionstorage.getItem('providerServiceID');
       const userId: any = this.sessionstorage.getItem('userID');
-      const loginData = this.sessionstorage.getItem('loginDataResponse');
+      const loginData =
+        this.sessionstorage.getItem('loginDataResponse') ?? '{}';
       const parsedLoginData = JSON.parse(loginData);
       const designation = parsedLoginData.designation?.designationName;
       this.servicePointService

@@ -87,7 +87,9 @@ export class HttpInterceptorService implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         console.error(error);
         this.spinnerService.setLoading(false);
-        if (error.status === 401) {
+        if (this.isLoginRequest(req.url)) {
+          return throwError(() => error.error || error);
+        } else if (error.status === 401) {
           this.handleSessionExpiry(
             this.currentLanguageSet.sessionExpiredPleaseLogin ||
               'Session has expired, please login again.',
@@ -110,9 +112,13 @@ export class HttpInterceptorService implements HttpInterceptor {
         }
         sessionStorage.clear();
         this.sessionstorage.clear();
-        return throwError(error.error);
+        return throwError(() => error.error || error);
       }),
     );
+  }
+
+  private isLoginRequest(url: string): boolean {
+    return url.indexOf('user/userAuthenticate') >= 0;
   }
 
   private onSuccess(url: string, response: any): void {

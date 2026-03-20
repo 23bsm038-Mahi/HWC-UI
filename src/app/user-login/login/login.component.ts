@@ -207,78 +207,111 @@ export class LoginComponent implements OnInit {
                         .userLogoutPreviousSession(
                           this.loginForm.controls.userName.value,
                         )
-                        .subscribe((userlogoutPreviousSession: any) => {
-                          if (userlogoutPreviousSession.statusCode === 200) {
-                            this.authService
-                              .login(
-                                this.loginForm.controls.userName.value,
-                                encryptPassword,
-                                true,
-                                this.enableCaptcha
-                                  ? this.captchaToken
-                                  : undefined,
-                              )
-                              .subscribe((userLoggedIn: any) => {
-                                if (userLoggedIn.statusCode === 200) {
-                                  if (userLoggedIn?.data?.previlegeObj[0]) {
-                                    this.sessionstorage.setItem(
-                                      'loginDataResponse',
-                                      JSON.stringify(userLoggedIn.data),
-                                    );
-                                    this.trackingService.setUserId(
-                                      userLoggedIn.data.userID,
-                                    );
-                                    this.authService.sessionExpiredHandled =
-                                      false;
-                                    this.sessionstorage.setItem(
-                                      'loginDataResponse',
-                                      JSON.stringify(userLoggedIn.data),
-                                    );
-                                    this.getServicesAuthdetails(
-                                      userLoggedIn.data,
-                                    );
-                                  } else {
-                                    this.resetCaptcha();
-                                    this.confirmationService.alert(
-                                      'Seems you are logged in from somewhere else, Logout from there & try back in.',
-                                      'error',
-                                    );
-                                  }
-                                } else {
-                                  this.resetCaptcha();
-                                  this.confirmationService.alert(
-                                    userLoggedIn.errorMessage,
-                                    'error',
-                                  );
-                                }
-                              });
-                          } else {
-                            this.resetCaptcha();
-                            this.confirmationService.alert(
-                              userlogoutPreviousSession.errorMessage,
-                              'error',
-                            );
-                          }
-                        });
+                        .subscribe(
+                          (userlogoutPreviousSession: any) => {
+                            if (userlogoutPreviousSession.statusCode === 200) {
+                              this.authService
+                                .login(
+                                  this.loginForm.controls.userName.value,
+                                  encryptPassword,
+                                  true,
+                                  this.enableCaptcha
+                                    ? this.captchaToken
+                                    : undefined,
+                                )
+                                .subscribe(
+                                  (userLoggedIn: any) => {
+                                    if (userLoggedIn.statusCode === 200) {
+                                      if (userLoggedIn?.data?.previlegeObj[0]) {
+                                        this.sessionstorage.setItem(
+                                          'loginDataResponse',
+                                          JSON.stringify(userLoggedIn.data),
+                                        );
+                                        this.trackingService.setUserId(
+                                          userLoggedIn.data.userID,
+                                        );
+                                        this.authService.sessionExpiredHandled =
+                                          false;
+                                        this.sessionstorage.setItem(
+                                          'loginDataResponse',
+                                          JSON.stringify(userLoggedIn.data),
+                                        );
+                                        this.getServicesAuthdetails(
+                                          userLoggedIn.data,
+                                        );
+                                      } else {
+                                        this.resetCaptcha();
+                                        this.confirmationService.alert(
+                                          'Seems you are logged in from somewhere else, Logout from there & try back in.',
+                                          'error',
+                                        );
+                                      }
+                                    } else {
+                                      this.resetCaptcha();
+                                      this.showLoginError(userLoggedIn);
+                                    }
+                                  },
+                                  (error) => {
+                                    this.showLoginError(error);
+                                  },
+                                );
+                            } else {
+                              this.showLoginError(userlogoutPreviousSession);
+                            }
+                          },
+                          (error) => {
+                            this.showLoginError(error);
+                          },
+                        );
                     } else {
                       this.resetCaptcha();
                       sessionStorage.clear();
                       this.router.navigate(['/login']);
-                      this.confirmationService.alert(res.errorMessage, 'error');
+                      this.showLoginError(res);
                     }
                   });
               } else {
-                this.resetCaptcha();
-                this.confirmationService.alert(res.errorMessage, 'error');
+                this.showLoginError(res);
               }
             }
           },
           (err) => {
-            this.resetCaptcha();
-            this.confirmationService.alert(err, 'error');
+            this.showLoginError(err);
           },
         );
     }
+  }
+
+  private showLoginError(error: any) {
+    this.resetCaptcha();
+    this.confirmationService.alert(this.getLoginErrorMessage(error), 'error');
+  }
+
+  private getLoginErrorMessage(error: any): string {
+    if (typeof error === 'string' && error.trim()) {
+      return error;
+    }
+
+    if (error?.errorMessage && typeof error.errorMessage === 'string') {
+      return error.errorMessage;
+    }
+
+    if (error?.message && typeof error.message === 'string') {
+      return error.message;
+    }
+
+    if (
+      error?.error?.errorMessage &&
+      typeof error.error.errorMessage === 'string'
+    ) {
+      return error.error.errorMessage;
+    }
+
+    if (error?.error?.message && typeof error.error.message === 'string') {
+      return error.error.message;
+    }
+
+    return 'Unable to login. Please try again.';
   }
 
   getServicesAuthdetails(loginDataResponse: any) {
